@@ -1,0 +1,53 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    password: postgres
+#    url: jdbc:postgresql://192.168.20.179:5432/evisible-erp
+#    url: jdbc:postgresql://127.0.0.1:5432/evisible-erp
+    url: jdbc:postgresql://192.168.20.179:5432/evisible-inventory
+    username: postgres
+    platform: storage
+  aop:
+    proxy-target-class: true
+  profiles:
+    include: message
+  redis:
+    database: 0
+    url:
+    host: 192.168.20.179
+    password:
+    ssl: false
+    port: 6379
+    timeout: 5000ms
+    lettuce:
+      pool:
+        max-active: 10
+        max-idle: 6
+        min-idle: 3
+        max-wait: 1000s
+
+server:
+  port: 58887
+  tomcat:
+    uri-encoding: utf-8
+debug: true
+
+#mybatis
+#mybatis:
+#  mapper-locations: classpath*:mapper/*Mapper.xml
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+
+fileservice:
+  uploadUrl: http://127.0.0.1:8515/file/upload
+  downloadUrl: http://127.0.0.1:8515/file/download
+
+ev:
+  swagger:
+    enabled: true
+    controller-base-package: com.easysight.storage.api.controller
+
+
+
+
+
